@@ -1,17 +1,22 @@
 import { showModal, hideModal, showActivePlaymenrSystem } from "./renderFunctions";
 
 const startValide = (number) => {
-	const clearNumber = number.replaceAll(/[^\d]/g, "");
+	const numberStr = '' + number;
+	const clearNumber = numberStr.replaceAll(/[^\d]/g, "");
 
 	if (clearNumber.length < 16) {
-		showModal("Слишком короткимй номер карты");
-		setTimeout(hideModal, 1000);
+		showModal("Слишком короткимй номер карты", "invalid");
+		setTimeout(() => {
+		hideModal("invalid")
+	}, 1000);
 		return;
 	}
 
 	if (clearNumber.length > 16) {
-		showModal("Слишком длинный номер карты");
-		setTimeout(hideModal, 1000);
+		showModal("Слишком длинный номер карты", "invalid");
+		setTimeout(() => {
+		hideModal("invalid")
+	}, 1000);
 		return;
 	}
 
@@ -19,9 +24,12 @@ const startValide = (number) => {
 	showActivePlaymenrSystem(playmentSystem);
 	const chek = chekNumberValidity(clearNumber);
 	const mess = (chek) ? "Корректный номер карты" : "Некоректный номер карты";
+	const isValid = (chek) ? "valid" : "invalid";
 
-	showModal(mess);
-	setTimeout(hideModal, 1000);
+	showModal(mess, isValid);
+	setTimeout(() => {
+		hideModal(isValid)
+	}, 1000);
 };
 
 const chekPlaymentSystem = (number) => {

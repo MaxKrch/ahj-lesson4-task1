@@ -30,16 +30,19 @@ const queryApp = (container) => {
 	return app;
 };
 
-const showModal = (message) => {
+const showModal = (message, isValid) => {
+	console.log(isValid)
 	const modal = document.querySelector(".message-block");
 	modal.textContent = message;
 	modal.classList.remove("hidden-item");
+	modal.classList.add(isValid);
 };
 
-const hideModal = () => {
+const hideModal = (isValid) => {
 	const modal = document.querySelector(".message-block");
 	modal.textContent = "";
 	modal.classList.add("hidden-item");
+	modal.classList.remove(isValid);
 };
 
 const clearInput = () => {

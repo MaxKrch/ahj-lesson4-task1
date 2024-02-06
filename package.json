@@ -7,8 +7,9 @@
     "start": "webpack serve --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "lint": "eslint . --fix",
-    "test": "jest",
-    "coverage": "jest --coverage",
+    "test": "jest --testPathPattern=./__tests__",
+    "coverage": "jest --coverage --testPathPattern=./__tests__",
+    "e2e": "jest --testPathPattern=./__e2e__ --runInBand",
     "preshow:coverage": "npm run coverage",
     "show:coverage": "live-server coverage/lcov-report",
     "preshow:dist": "npm run build",
@@ -41,6 +42,8 @@
   },
   "dependencies": {
     "core-js": "^3.35.1",
+    "jest-puppeteer": "^9.0.2",
+    "puppeteer": "^21.11.0",
     "terser-webpack-plugin": "^5.3.10"
   }
 }

@@ -1,4 +1,4 @@
-import startValide, { chekPlaymentSystem, chekNumberValidity } from '../validationFunctions';
+import { chekPlaymentSystem, chekNumberValidity } from '../validationFunctions';
 
 test.each([
 	{desc: 'playmentSystem is mir', input: '2', expected: 'mir'},
